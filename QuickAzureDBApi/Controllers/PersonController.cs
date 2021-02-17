@@ -21,18 +21,16 @@ namespace QuickAzureDBApi.Controllers
             this.personRepository = personRepository;
         }
 
-        // GET: api/<PersonController>
         [HttpGet]
         public async Task<ActionResult<List<Person>>> GetAllPeople()
         {
             return Ok(await personRepository.GetAllPersonsAsync());
         }
 
-        // GET api/<PersonController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<List<Person>>> GetPersonById(int id)
         {
-            return "value";
+            return Ok(await personRepository.GetPersonByIdAsync(id));
         }
 
         // POST api/<PersonController>

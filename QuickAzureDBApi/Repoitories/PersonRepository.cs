@@ -2,6 +2,7 @@
 using QuickAzureDBApi.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuickAzureDBApi.Repoitories
@@ -20,9 +21,11 @@ namespace QuickAzureDBApi.Repoitories
             return await personDbContext.People.ToListAsync();
         }
 
-        public Task<Person> GetPersonByIdAsync()
+        public async Task<Person> GetPersonByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await personDbContext.People
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync();
         }
     }
 }

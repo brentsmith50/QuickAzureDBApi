@@ -7,6 +7,6 @@ namespace QuickAzureDBApi.Repoitories
     public interface IPersonRepository
     {
         Task<List<Person>> GetAllPersonsAsync();
-        Task<Person> GetPersonByIdAsync();
+        Task<Person> GetPersonByIdAsync(int id);
     }
 }
